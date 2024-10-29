@@ -61,26 +61,7 @@
       }
     };
 
-    function handleEdit(patient) {
-        navigate('/add-edit', { 
-          state: { 
-            isEditing: true, 
-            patientId: patient.id, 
-            initialPatientData: patient 
-    } 
-  });
-
-}
-
-    function navigateToPatientDetails(patientId) {
-      const patientData = patients.find(p => p.id === patientId);
-      navigate(`/edit/${patientId}`, {
-          state: {
-              id: patientId,
-            initialPatientData: patientData || null
-        }
-      });
-    }
+  
 
     $: showBottomButton = scrollY > 100 && (scrollY + innerHeight < pageHeight);
 
