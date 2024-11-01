@@ -26,10 +26,12 @@ class API {
       url += `?${queryParams.toString()}`;
     }
 
+    console.log('Fetching patients from URL:', url);
+    
     try {
       const response = await axios.get(url, {
         headers: { 'Accept': 'application/fhir+json' },
-        withCredentials: true // This might help with CORS in some cases
+        withCredentials: false // This might help with CORS in some cases
       });
       return response.data;
     } catch (error) {
@@ -75,5 +77,6 @@ class API {
     await axios.delete(`${serverUrl}/Patient/${id}`);
   }
 }
+
 export { API };
 export default new API();
